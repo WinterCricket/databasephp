@@ -1,9 +1,9 @@
 <?php 
 
 class Database{
-	private $host = "localhost:8080";
+	private $host = "localhost";
 	private $use = "root";
-	private $pw = "root";
+	private $pass = "root";
 	private $dbname = "phpwebsite";
 
 	private $dbh;
