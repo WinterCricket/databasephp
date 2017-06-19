@@ -26,7 +26,7 @@ $rows = $database->resultset();
 <h1>Add Posts</h1>
 <form method="post" action="<?php $_SERVER['PHP-SELF'];?>">
 	<label for="">Post ID</label><br/>
-	<input type="number" name="id" placeholder="Add an id number..." /><br />
+	<input type="number" name="id" placeholder="Add an id number..." /><br /><br/>
 	<label for="">Post Title</label><br/>
 	<input type="text" name="title" placeholder="Add a title..." /><br /><br />
 	<label for="">Post Body</label><br/>
@@ -41,7 +41,11 @@ $rows = $database->resultset();
 			<h2><?php echo $row['id'];?></h2>
 			<h3><?php echo $row['title'];?>
 			</h3>
-			<p> <?php echo $row['body']; ?> <p>
+			<p> <?php echo $row['body']; ?> <p><br />
+			<form method="post" action="<?php $_SERVER['PHP-SELF'];?>">
+				<input type="hidden" name="delete_id" value="<?php echo $row['id'];?>">
+				<input type="submit" name="delete" value="Delete" />
+			</form>
 		</div>
 
 	<?php endforeach; ?>
