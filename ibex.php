@@ -6,7 +6,12 @@ $database = new Database;
 
 
 $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+if($_Post['delete']){
+	$delete_id = $_Post['delete_id'];
+	$database->query('DELETE FROM posts WHERE id = :id');
+	$database->bind(':id', $delete_id);
+	$database->execute();
+}
 if($post['submit']){
 	$id = $post['id'];
 	$title = $post['title'];
