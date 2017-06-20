@@ -6,8 +6,8 @@ $database = new Database;
 
 
 $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-if($_Post['delete']){
-	$delete_id = $_Post['delete_id'];
+if($post['delete']){
+	$delete_id = $post['delete_id'];
 	$database->query('DELETE FROM posts WHERE id = :id');
 	$database->bind(':id', $delete_id);
 	$database->execute();
@@ -48,7 +48,7 @@ $rows = $database->resultset();
 			</h3>
 			<p> <?php echo $row['body']; ?> <p><br />
 			<form method="post" action="<?php $_SERVER['PHP-SELF'];?>">
-				<input type="hidden" name="delete_id" value="<?php echo $row['id'];?>">
+				<input type="hidden" name="delete_id" value="<?php echo $row['id'];?>" />
 				<input type="submit" name="delete" value="Delete" />
 			</form>
 		</div>
